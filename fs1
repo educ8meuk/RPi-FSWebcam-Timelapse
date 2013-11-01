@@ -1,13 +1,15 @@
 #!/bin/bash
-#Script to capture images on video device 0, looping (-l) every 10 seconds.  Title text can be added to title ""
-#1st images saved is 800x600, then scaled and saved as 640x480 to different location.
 
-# Make a new directory called images - unable to create if already exists
+#script to capture images on video device 0, looping (-l) every 10 seconds.  Title text can be added to title ""
+#1st image is saved is 800x600, then scaled and saved as 640x480 to different location.
+#this file should be saved into /bin directory and given 755 permissions.
+
+#Make a new directory called images - unable to create if already exists
 mkdir "images"
 
 #Tells the user that the timelapse is about to start
 echo "Starting time-lapse!"
 echo "Press Ctrl+C to finish"
 
-#fswebcam script
+#fswebcam script - saves images into /images directory with date and time stamp
 fswebcam -d /dev/video0 -r 800x600 -l 5 --no-banner /home/pi/Images/%Y-%m-%d_%H-%M-%S.jpeg --title="" --shadow --line-colour=#ff000000 --banner-colour=#60ffffff --bottom-banner --scale 640x480 webcam.jpeg
